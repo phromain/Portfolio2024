@@ -32,7 +32,7 @@
 
 .carousel-indicators {
     position: absolute;
-    bottom: 80px;
+    bottom: 5%;
     left: 50%;
     transform: translateX(-125%);
     z-index: 1000;
