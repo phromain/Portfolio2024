@@ -15,7 +15,6 @@
     background-color: rgba(0, 123, 255, 0.8);
 }
 
-
 .custom-arrow {
     position: absolute;
     top: 50%;
@@ -33,10 +32,13 @@
 
 .carousel-indicators {
     position: absolute;
-    bottom: 200px;
+    bottom: 80px;
     left: 50%;
     transform: translateX(-125%);
     z-index: 1000;
+    width: auto;
+    display: flex;
+    justify-content: center;
 }
 
 .container-fluid {
