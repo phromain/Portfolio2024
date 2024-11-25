@@ -1,0 +1,48 @@
+.card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.card-body .btn {
+    transition: background-color 0.3s ease;
+}
+
+.card-body .btn:hover {
+    background-color: rgba(0, 123, 255, 0.8);
+}
+
+
+.custom-arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 1000;
+}
+
+.carousel-control-prev.custom-arrow {
+    left: 10px;
+}
+
+.carousel-control-next.custom-arrow {
+    right: 10px;
+}
+
+.carousel-indicators {
+    position: absolute;
+    bottom: 200px;
+    left: 50%;
+    transform: translateX(-125%);
+    z-index: 1000;
+}
+
+.container-fluid {
+    overflow: hidden;
+}
+
+.container {
+    overflow: hidden;
+}

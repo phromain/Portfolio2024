@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { Projects, ProjectInfo } from '../const/projets';
 
 @Component({
   selector: 'app-carousel',
@@ -9,16 +10,41 @@ import { CommonModule } from '@angular/common';
   styleUrls: ['./carousel.component.css']
 })
 export class CarouselComponent {
-  projects = [
-    { title: 'Projet 1', description: 'Description du projet 1', imageUrl: 'assets/image1.jpg' },
-    { title: 'Projet 2', description: 'Description du projet 2', imageUrl: 'assets/image2.jpg' },
-    { title: 'Projet 3', description: 'Description du projet 3', imageUrl: 'assets/image3.jpg' },
-    { title: 'Projet 4', description: 'Description du projet 4', imageUrl: 'assets/image4.jpg' },
-    { title: 'Projet 5', description: 'Description du projet 5', imageUrl: 'assets/image5.jpg' },
-    { title: 'Projet 6', description: 'Description du projet 6', imageUrl: 'assets/image6.jpg' },
-    { title: 'Projet 7', description: 'Description du projet 7', imageUrl: 'assets/image7.jpg' },
-    { title: 'Projet 8', description: 'Description du projet 8', imageUrl: 'assets/image8.jpg' },
-  ];
+  projects: ProjectInfo[] = Object.values(Projects);
+  currentSlide = 0;
+  projectsPerSlide = 3;
+  animateClass = '';
 
+  getSlideProjects(index: number): ProjectInfo[] {
+    const start = index * this.projectsPerSlide;
+    const end = start + this.projectsPerSlide;
+    return this.projects.slice(start, end);
+  }
+
+  get totalSlides(): number {
+    return Math.ceil(this.projects.length / this.projectsPerSlide);
+  }
+
+  setSlide(index: number): void {
+    const direction = index > this.currentSlide ? 'animate__fadeInRight' : 'animate__fadeInLeft';
+    this.animateClass = `animate__animated ${direction}`;
+    this.currentSlide = index;
+
+
+    setTimeout(() => {
+      this.animateClass = '';
+    }, 1000); 
+  }
+  
+  nextSlide(): void {
+    if (this.currentSlide < this.totalSlides - 1) {
+      this.setSlide(this.currentSlide + 1);
+    }
+  }
+
+  previousSlide(): void {
+    if (this.currentSlide > 0) {
+      this.setSlide(this.currentSlide - 1);
+    }
+  }
 }
-
